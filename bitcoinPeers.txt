@@ -1,0 +1,22 @@
+Server:  lngdaydcxp024.legal.regn.net
+Address:  138.12.13.95
+
+DNS request timed out.
+    timeout was 2 seconds.
+DNS request timed out.
+    timeout was 2 seconds.
+Name:    bitseed.xf2.org
+Addresses:  97.117.255.48
+	  99.242.230.163
+	  162.243.194.210
+	  173.69.49.106
+	  198.38.93.227
+	  209.208.110.92
+	  24.52.35.44
+	  50.177.196.160
+	  68.48.214.241
+	  76.111.96.126
+	  85.214.90.1
+	  94.226.111.26
+	  96.2.103.25
+
