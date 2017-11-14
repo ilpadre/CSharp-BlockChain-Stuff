@@ -58,7 +58,7 @@ namespace BlockChain
                             var block = ReadBlockHeader(reader);
                             block.BlockNumber = ++blockNumber;
                             block.fileName = file.Name;
-                            blocks.Add(block);
+                            blocks.Add(block); 
                         }
                     }
                 }
