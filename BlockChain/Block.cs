@@ -10,6 +10,8 @@ namespace BlockChain
     {
         private static DateTime _epochBaseDate = new DateTime(1970, 1, 1);
 
+        public string fileName { get; set; }
+
         public BlockHeader header { get; set; }
 
         public uint HeaderLength { get; set; }

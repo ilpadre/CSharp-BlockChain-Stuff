@@ -1,30 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using BlockChain;
 
 namespace BlockChainParserConsole
 {
-    class Program
+    public class Program
     {
-        const string blockPath = @"E:\Bitcoin\blocks";
+        //const string blockPath = @"C:\Users\ken.baum\Documents\Personal\Projects\Elixir-Blockchain-Parser\blockchain_parser\blocks";
+        const string blockPath = @"C:\Users\ken.baum\Documents\BitCoin\blocks";
         static void Main(string[] args)
         {
+            List<Block> blocks = null;
+            var parser = new Parser();
+            var keepGoing = true;
+            while (keepGoing)
+            {
+                DisplayMenu();
+                var userChoice = Console.ReadLine();
+                switch (userChoice)
+                {
+                    case "1":
+                        blocks = parser.ParseHeader(blockPath);
+                        break;
+                    case "2":
+                        blocks = parser.Parse(blockPath);
+                        break;
+                    case "3":
+                        parser.SaveFirstBlock(blockPath);
+                        break;
+                    case "4":
+                        keepGoing = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            var parser = new Parser(); 
-            var blocks = parser.ParseHeader(blockPath);
-            //var blocks = parser.Parse(blockPath);
-            watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
+        }
 
+        private static void DisplayMenu()
+        {
+            Console.WriteLine("**********************************************");
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1. Parse block headers only");
+            Console.WriteLine("2. Parse blocks");
+            Console.WriteLine("3. Save first block");
+            Console.WriteLine("4. Exit program");
+            Console.WriteLine("**********************************************");
+        }
 
-
-            Console.WriteLine("Number of Blocks: " + blocks.Count() + " Time elapsed: " + elapsedMs/1000.0);
-
-            Console.ReadLine();
+        private static void ProcessMenuSelection(string entry)
+        {
+            List<Block> blocks = null;
+            var parser = new Parser();
+            switch (entry)
+            {
+                case "1":
+                    blocks = parser.ParseHeader(blockPath);
+                    break;
+                case "2":
+                    blocks = parser.Parse(blockPath);
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
